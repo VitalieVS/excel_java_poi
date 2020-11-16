@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="poi_lib">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/src/poi_lib" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/src/poi_lib/docs/apidocs/dev" />
+    </JAVADOC>
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/src/poi_lib" recursive="false" />
+  </library>
+</component>
