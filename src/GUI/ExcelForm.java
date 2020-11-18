@@ -8,8 +8,21 @@ import java.awt.event.ActionListener;
 public class ExcelForm {
     private JButton writeFileButton;
     private JPanel panelMain;
+    private JButton OpenFile;
+    private JTable table1;
+    private JFileChooser fc;
 
     public ExcelForm() {
+
+    }
+
+    public void initComponents() {
+        JFrame frame = new JFrame("Excel Editor");
+        frame.setContentPane(new ExcelForm().panelMain);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+
         writeFileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -17,13 +30,17 @@ public class ExcelForm {
                 writer.write();
             }
         });
+        OpenFile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fc = new JFileChooser();
+                fc.showOpenDialog(panelMain);
+            }
+        });
     }
 
     public static void main(String[] args) {
-       JFrame frame = new JFrame("App");
-       frame.setContentPane(new ExcelForm().panelMain);
-       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-       frame.pack();
-       frame.setVisible(true);
+            ExcelForm form = new ExcelForm();
+            form.initComponents();
         }
     }

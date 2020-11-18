@@ -1,9 +1,5 @@
 package options;
-
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -44,11 +40,9 @@ public class WriteFile {
         }
         try
         {
-            //Write the workbook in file system
             FileOutputStream out = new FileOutputStream(new File("test.xlsx"));
             workbook.write(out);
             out.close();
-            System.out.println("test.xlsx writter succesfully");
         }
         catch (Exception e)
         {
