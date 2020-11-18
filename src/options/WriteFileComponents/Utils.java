@@ -1,5 +1,6 @@
 package options.WriteFileComponents;
 
+import javax.swing.*;
 import java.io.File;
 
 public class Utils {

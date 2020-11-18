@@ -19,7 +19,12 @@ public class ExcelForm {
         OpenFile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               createFileChooser();
+               if (createFileChooser()) {
+                   System.out.println("done");
+               } else {
+                   System.out.println("nu a ales");
+               }
+
             }
         });
         writeFileButton.addActionListener(new ActionListener() {
@@ -30,7 +35,7 @@ public class ExcelForm {
         });
     }
 
-    public void createFileChooser() {
+    public boolean createFileChooser() {
         fc = new JFileChooser();
         fc.setAcceptAllFileFilterUsed(false);
         fc.addChoosableFileFilter(new ImageFilter());
@@ -38,7 +43,9 @@ public class ExcelForm {
         int result = fc.showOpenDialog(null);
         if (result == JFileChooser.APPROVE_OPTION) {
             File file = fc.getSelectedFile();
-            System.out.println(file);
+            return true;
+        } else {
+            return false;
         }
     }
 
