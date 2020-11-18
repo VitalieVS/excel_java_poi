@@ -1,5 +1,7 @@
 package GUI;
 
+import options.WriteFileComponents.ImageFilter;
+import options.WriteFileComponents.Utils;
 import options.WriteFile;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -30,6 +32,8 @@ public class ExcelForm {
 
     public void createFileChooser() {
         fc = new JFileChooser();
+        fc.setAcceptAllFileFilterUsed(false);
+        fc.addChoosableFileFilter(new ImageFilter());
         fc.setCurrentDirectory(new File(System.getProperty("user.home")));
         int result = fc.showOpenDialog(null);
         if (result == JFileChooser.APPROVE_OPTION) {
@@ -37,6 +41,7 @@ public class ExcelForm {
             System.out.println(file);
         }
     }
+
 
     public void initComponents() {
         JFrame frame = new JFrame("Excel Editor");
