@@ -1,7 +1,7 @@
 package GUI;
 
+import options.ReadFile;
 import options.WriteFileComponents.ImageFilter;
-import options.WriteFileComponents.Utils;
 import options.WriteFile;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,6 +14,7 @@ public class ExcelForm {
     private JButton OpenFile;
     private JTable table1;
     private JFileChooser fc;
+    private File file;
 
     public ExcelForm() {
         OpenFile.addActionListener(new ActionListener() {
@@ -21,6 +22,9 @@ public class ExcelForm {
             public void actionPerformed(ActionEvent e) {
                if (createFileChooser()) {
                    System.out.println("done");
+                   ReadFile reader = new ReadFile(file);
+                   reader.read();
+
                } else {
                    System.out.println("nu a ales");
                }
@@ -42,7 +46,7 @@ public class ExcelForm {
         fc.setCurrentDirectory(new File(System.getProperty("user.home")));
         int result = fc.showOpenDialog(null);
         if (result == JFileChooser.APPROVE_OPTION) {
-            File file = fc.getSelectedFile();
+            file = fc.getSelectedFile();
             return true;
         } else {
             return false;
