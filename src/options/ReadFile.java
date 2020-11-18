@@ -1,5 +1,7 @@
 package options;
 
+import options.WriteFileComponents.Utils;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -14,12 +16,19 @@ public class ReadFile {
 
     public ReadFile(File inputFile) {
         this.inputFile = inputFile;
+
+        System.out.println(Utils.getExtension(this.inputFile));
     }
 
     public void read() {
+        Workbook workbook;
         try {
             FileInputStream excelFile = new FileInputStream(new File(String.valueOf(inputFile)));
-            Workbook workbook = new XSSFWorkbook(excelFile);
+            if (Utils.getExtension(this.inputFile).equals("xls")) {
+                workbook = new HSSFWorkbook(excelFile);
+            } else {
+                workbook = new XSSFWorkbook(excelFile);
+            }
             Sheet datatypeSheet = workbook.getSheetAt(0);
             Iterator<Row> iterator = datatypeSheet.iterator();
 
