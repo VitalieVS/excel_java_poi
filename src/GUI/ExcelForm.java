@@ -17,9 +17,7 @@ public class ExcelForm {
         OpenFile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                fc = new JFileChooser();
-                fc.setCurrentDirectory(new File(System.getProperty("user.home")));
-                fc.showOpenDialog(panelMain);
+               createFileChooser();
             }
         });
         writeFileButton.addActionListener(new ActionListener() {
@@ -28,6 +26,16 @@ public class ExcelForm {
                 writer.write();
             }
         });
+    }
+
+    public void createFileChooser() {
+        fc = new JFileChooser();
+        fc.setCurrentDirectory(new File(System.getProperty("user.home")));
+        int result = fc.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File file = fc.getSelectedFile();
+            System.out.println(file);
+        }
     }
 
     public void initComponents() {
