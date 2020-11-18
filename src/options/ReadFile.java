@@ -3,6 +3,7 @@ package options;
 import options.WriteFileComponents.Utils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.util.CellReference;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
@@ -29,6 +30,11 @@ public class ReadFile {
             }
             Sheet datatypeSheet = workbook.getSheetAt(0);
             Iterator<Row> iterator = datatypeSheet.iterator();
+
+            Cell wanted = datatypeSheet.getRow(0).getCell(0);
+            String wantedRef = (new CellReference(wanted)).formatAsString();
+            System.out.println(wantedRef);
+
 
             while (iterator.hasNext()) {
                 Row currentRow = iterator.next();

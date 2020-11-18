@@ -4,6 +4,7 @@ import options.ReadFile;
 import options.WriteFileComponents.ImageFilter;
 import options.WriteFile;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -15,6 +16,24 @@ public class ExcelForm {
     private JTable table1;
     private JFileChooser fc;
     private File file;
+    String[] columnNames = {"First Name",
+            "Last Name",
+            "Sport",
+            "# of Years",
+            "Vegetarian"};
+
+    String[][] data = {
+            {"Kathy", "Smith",
+                    "Snowboarding", "5", "Boolean.FALSE"},
+            {"John", "Doe",
+                    "Rowing", "3", "Boolean.TRUE"},
+            {"Sue", "Black",
+                    "Knitting", "2", "Boolean.FALSE"},
+            {"Jane", "White",
+                    "Speed reading", "20", "Boolean.TRUE"},
+            {"Joe", "Brown",
+                    "Pool", "10", "Boolean.FALSE"}
+    };
 
     public ExcelForm() {
         OpenFile.addActionListener(new ActionListener() {
@@ -59,6 +78,14 @@ public class ExcelForm {
         frame.setContentPane(new ExcelForm().panelMain);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+       // DefaultTableModel model = (DefaultTableModel)table1.getModel();
+
+
+        for (String[] row : data) {
+            model.addRow(row);
+        }
+
         frame.setVisible(true);
     }
 
@@ -66,4 +93,8 @@ public class ExcelForm {
             ExcelForm form = new ExcelForm();
             form.initComponents();
         }
+
+    private void createUIComponents() {
+
     }
+}
