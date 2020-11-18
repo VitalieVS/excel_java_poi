@@ -16,8 +16,6 @@ public class ReadFile {
 
     public ReadFile(File inputFile) {
         this.inputFile = inputFile;
-
-        System.out.println(Utils.getExtension(this.inputFile));
     }
 
     public void read() {
