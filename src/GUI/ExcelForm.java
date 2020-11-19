@@ -1,5 +1,6 @@
 package GUI;
 
+import data.CellArray;
 import models.ForcedListSelectionModel;
 import options.ReadFile;
 import options.WriteFileComponents.ImageFilter;
@@ -11,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-public class ExcelForm {
+public class ExcelForm implements CellArray {
     private JButton writeFileButton;
     private JPanel panelMain;
     private JButton OpenFile;
