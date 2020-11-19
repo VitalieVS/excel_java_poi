@@ -85,7 +85,7 @@ public class ExcelForm {
     }
 
     public void InsertRows() {
-        /*JFrame frame = new JFrame("Inserting rows in the table!");
+        JFrame frame = new JFrame("Inserting rows in the table!");
         JPanel panel = new JPanel();
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         JTable table = new JTable(model);
@@ -105,16 +105,6 @@ public class ExcelForm {
         frame.setSize(300,300);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-         */
-        JFrame frame = new JFrame("try");
-
-        JTable mainTable = new JTable();
-        JScrollPane scrollPane = new JScrollPane(mainTable);
-        JTable rowTable = new RowNumberTable(mainTable);
-        scrollPane.setRowHeaderView(rowTable);
-        scrollPane.setCorner(JScrollPane.UPPER_LEFT_CORNER, rowTable.getTableHeader());
-
 
     }
 
