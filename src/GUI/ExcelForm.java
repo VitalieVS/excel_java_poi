@@ -1,6 +1,6 @@
 package GUI;
 
-import data.RowNumberTable;
+import models.ForcedListSelectionModel;
 import options.ReadFile;
 import options.WriteFileComponents.ImageFilter;
 import options.WriteFile;
@@ -100,6 +100,9 @@ public class ExcelForm {
        // model.insertRow(3, new Object[]{"Amar", "600"});
         //Insert last position
        // model.insertRow(table.getRowCount(),new Object[]{"Sushil","600"});
+        //setReorderingAllowed(boolean reorderingAllowed)
+        table.setSelectionModel(new ForcedListSelectionModel());
+        table.getTableHeader().setReorderingAllowed(false);
         panel.add(table);
         frame.add(panel);
         frame.setSize(300,300);
