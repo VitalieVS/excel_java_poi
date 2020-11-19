@@ -1,15 +1,14 @@
 package options;
 
-import data.RowData;
+import data.CellNumericValueData;
+import data.CellStringValueData;
 import options.WriteFileComponents.Utils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.ss.util.CellReference;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,7 +21,8 @@ public class ReadFile {
         this.inputFile = inputFile;
     }
 
-    List<RowData> clientList = new ArrayList<>();
+    List<CellStringValueData> stringValueList = new ArrayList<>();
+    List<CellNumericValueData> numericValueList = new ArrayList<>();
 
     public void read() {
         Workbook workbook;
@@ -36,32 +36,39 @@ public class ReadFile {
             Sheet datatypeSheet = workbook.getSheetAt(0);
             Iterator<Row> iterator = datatypeSheet.iterator();
 
-           // Cell wanted = datatypeSheet.getRow(0).getCell(0);
-           // String wantedRef = (new CellReference(wanted)).formatAsString();
-           // System.out.println(wantedRef);
-
-
             while (iterator.hasNext()) {
                 Row currentRow = iterator.next();
                 Iterator<Cell> cellIterator = currentRow.iterator();
                 while (cellIterator.hasNext()) {
                     Cell currentCell = cellIterator.next();
                     if (currentCell.getCellType() == CellType.STRING) {
-                        RowData foo = new RowData(currentCell.getStringCellValue());
-                        clientList.add(foo);
-                        System.out.print(currentCell.getStringCellValue() + "--");
+                        CellStringValueData foo = new CellStringValueData(
+                                currentCell.getStringCellValue(),
+                                currentCell.getRowIndex(),
+                                currentCell.getColumnIndex());
+                        stringValueList.add(foo);
                     } else if (currentCell.getCellType() == CellType.NUMERIC) {
-                        System.out.print(currentCell.getNumericCellValue() + "--");
+                        CellNumericValueData foo = new CellNumericValueData(
+                                currentCell.getNumericCellValue(),
+                                currentCell.getRowIndex(),
+                                currentCell.getColumnIndex());
+                        numericValueList.add(foo);
                     }
                 }
-                System.out.println();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("row data");
-        for (int i = 0; i < clientList.size(); i++) {
-            System.out.println(clientList.get(i).getRowData());
+
+        System.out.println("row String data:");
+        for (int i = 0; i < stringValueList.size(); i++) {
+            System.out.println(stringValueList.get(i).getRowData());
+        }
+
+        System.out.println("row Numeric data:");
+
+        for (int i = 0; i < numericValueList.size(); i++) {
+            System.out.println(numericValueList.get(i).getNumericData());
         }
 
        // for (int i = 0; i < clientList.size(); i++) {
