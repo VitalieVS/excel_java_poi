@@ -11,7 +11,7 @@ public class CellStringValueData {
         this.columnIndex = columnIndex;
     }
 
-    public String getRowData() {
+    public String getStringData() {
         return this.data;
     }
 }

@@ -1,5 +1,6 @@
 package options;
 
+import data.CellArray;
 import data.CellNumericValueData;
 import data.CellStringValueData;
 import options.WriteFileComponents.Utils;
@@ -10,19 +11,14 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
-public class ReadFile {
+public class ReadFile implements CellArray {
     File inputFile;
 
     public ReadFile(File inputFile) {
         this.inputFile = inputFile;
     }
-
-    List<CellStringValueData> stringValueList = new ArrayList<>();
-    List<CellNumericValueData> numericValueList = new ArrayList<>();
 
     public void read() {
         Workbook workbook;
@@ -59,21 +55,5 @@ public class ReadFile {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        System.out.println("row String data:");
-        for (int i = 0; i < stringValueList.size(); i++) {
-            System.out.println(stringValueList.get(i).getRowData());
-        }
-
-        System.out.println("row Numeric data:");
-
-        for (int i = 0; i < numericValueList.size(); i++) {
-            System.out.println(numericValueList.get(i).getNumericData());
-        }
-
-       // for (int i = 0; i < clientList.size(); i++) {
-          //  System.out.println(clientList);
-       // }
-
     }
 }
