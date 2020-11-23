@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jofficeconvert.v2020R2.04">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/converter_lib/jofficeconvert.v2020R2.04.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

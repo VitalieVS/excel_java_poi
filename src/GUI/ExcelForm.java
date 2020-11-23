@@ -1,10 +1,11 @@
 package GUI;
 
 import data.CellArray;
+import options.ExportToPDF;
 import options.ReadFile;
 import options.WriteFileComponents.ImageFilter;
 import options.WriteFile;
-import options.createTableData;
+import options.CeateTableData;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,6 +18,7 @@ public class ExcelForm implements CellArray {
     private JPanel panelMain;
     private JButton OpenFileButton;
     private JButton createTableButton;
+    private JButton exportToPDFButton;
     private JFileChooser fc;
     private File file;
 
@@ -43,8 +45,15 @@ public class ExcelForm implements CellArray {
         createTableButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                createTableData tableData = new createTableData();
+                CeateTableData tableData = new CeateTableData();
                 tableData.insertRows();
+            }
+        });
+        exportToPDFButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ExportToPDF tryHard = new ExportToPDF();
+                tryHard.save();
             }
         });
     }
