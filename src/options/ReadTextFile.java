@@ -3,10 +3,14 @@ package options;
 import java.io.File;
 
 public class ReadTextFile {
-    String filePath;
+    File file;
+
+    public ReadTextFile(File file) {
+        this.file = file;
+    }
 
     public void readFile(){
-        File myObj = new File("filename.txt");
+        File myObj = new File(String.valueOf(this.file));
         if (myObj.exists()) {
             System.out.println("File name: " + myObj.getName());
             System.out.println("Absolute path: " + myObj.getAbsolutePath());
@@ -16,9 +20,5 @@ public class ReadTextFile {
         } else {
             System.out.println("The file does not exist.");
         }
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
     }
 }

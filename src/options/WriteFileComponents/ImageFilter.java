@@ -11,7 +11,9 @@ public class ImageFilter extends FileFilter {
 
         String extension = Utils.getExtension(f);
         if (extension != null) {
-            if (extension.equals(Utils.xls) || extension.equals(Utils.xlsx )) {
+            if (extension.equals(Utils.xls)
+                    || extension.equals(Utils.xlsx)
+                    || extension.equals(Utils.txt)) {
                 return true;
             } else {
                 return false;

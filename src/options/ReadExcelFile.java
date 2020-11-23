@@ -13,10 +13,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Iterator;
 
-public class ReadFile implements CellArray {
+public class ReadExcelFile implements CellArray {
     File inputFile;
 
-    public ReadFile(File inputFile) {
+    public ReadExcelFile(File inputFile) {
         this.inputFile = inputFile;
     }
 

@@ -1,11 +1,8 @@
 package GUI;
 
 import data.CellArray;
-import options.ExportToPDF;
-import options.ReadFile;
+import options.*;
 import options.WriteFileComponents.ImageFilter;
-import options.WriteFile;
-import options.CeateTableData;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -28,7 +25,7 @@ public class ExcelForm implements CellArray {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (createFileChooser()) {
-                    ReadFile reader = new ReadFile(file);
+                    ReadExcelFile reader = new ReadExcelFile(file);
                     reader.read();
                 }
             }
@@ -60,7 +57,10 @@ public class ExcelForm implements CellArray {
         openTXTButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                if (createFileChooser()) {
+                    ReadTextFile reader = new ReadTextFile(file);
+                    reader.readFile();
+                }
             }
         });
     }

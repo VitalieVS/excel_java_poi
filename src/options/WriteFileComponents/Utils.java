@@ -7,6 +7,7 @@ public class Utils {
 
     public final static String xls = "xls";
     public final static String xlsx = "xlsx";
+    public final static String txt = "txt";
 
     /*
      * Get the extension of a file.
