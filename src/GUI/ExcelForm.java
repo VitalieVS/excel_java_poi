@@ -7,6 +7,7 @@ import options.WriteFileComponents.ImageFilter;
 import options.WriteFile;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,24 +20,16 @@ public class ExcelForm implements CellArray {
     private JFileChooser fc;
     private File file;
 
-
-    String[] columnNames = {"First Name",
-            "Last Name",
-            "Sport",
-            "# of Years",
-            "Vegetarian"};
+    static String[] columnNames = {"Nume", "Prenume", "Grupa", "Buget"};
 
     Object[][] data = {
-            {"Kathy", "Smith",
-                    "Snowboarding", "5", "Boolean.FALSE"},
-            {"John", "Doe",
-                    "Rowing", "3", "Boolean.TRUE"},
-            {"Sue", "Black",
-                    "Knitting", "2", "Boolean.FALSE"},
-            {"Jane", "White",
-                    "Speed reading", "20", "Boolean.TRUE"},
-            {"Joe", "Brown",
-                    "Pool", "10", "Boolean.FALSE"}
+            {"Creanga", "Ion", "IS21Z", "Da"},
+            {"Turcanu", "Tudor", "IS21Z", "Da"},
+            {"Lungu", "Andrei", "IS21Z", "Nu"},
+            {"Bazaochi", "Dumitru", "IS21Z", "Da"},
+            {"Popov", "Marinela", "IS21Z", "Da"},
+            {"Popov", "Dumitru", "IS21Z", "Da"},
+            {"Eminescu", "MIhai", "IS21Z", "Nu"}
     };
 
     public ExcelForm() {
@@ -44,14 +37,9 @@ public class ExcelForm implements CellArray {
             @Override
             public void actionPerformed(ActionEvent e) {
                if (createFileChooser()) {
-                   System.out.println("done");
                    ReadFile reader = new ReadFile(file);
                    reader.read();
-
-               } else {
-                   System.out.println("nu a ales");
                }
-
             }
         });
         writeFileButton.addActionListener(new ActionListener() {
@@ -111,7 +99,6 @@ public class ExcelForm implements CellArray {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
     }
-
 
     public static void main(String[] args) {
             ExcelForm form = new ExcelForm();
