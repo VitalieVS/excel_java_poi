@@ -1,6 +1,7 @@
 package options;
 
-import java.io.File;
+import java.io.*;
+import java.util.Scanner;
 
 public class ReadTextFile {
     File file;
@@ -9,16 +10,32 @@ public class ReadTextFile {
         this.file = file;
     }
 
-    public void readFile(){
-        File myObj = new File(String.valueOf(this.file));
-        if (myObj.exists()) {
-            System.out.println("File name: " + myObj.getName());
-            System.out.println("Absolute path: " + myObj.getAbsolutePath());
-            System.out.println("Writeable: " + myObj.canWrite());
-            System.out.println("Readable " + myObj.canRead());
-            System.out.println("File size in bytes " + myObj.length());
-        } else {
-            System.out.println("The file does not exist.");
+    public void readFile() throws FileNotFoundException {
+        int elementNumber = 0;
+
+        try {
+            Scanner s = new Scanner(new File(String.valueOf(this.file)));
+
+            while (s.hasNext()) {
+                System.out.println("word:" + s.next());
+                switch (elementNumber) {
+                    case 0:
+
+                        break;
+                    case 1:
+
+                        break;
+                    case 2:
+
+                        break;
+                    case 3:
+
+                        break;
+                }
+                elementNumber++;
+            }
+        } catch (IOException e) {
+            System.out.println("Error accessing input file!");
         }
     }
 }
