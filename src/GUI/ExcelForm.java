@@ -24,10 +24,10 @@ public class ExcelForm implements CellArray {
         OpenFileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               if (createFileChooser()) {
-                   ReadFile reader = new ReadFile(file);
-                   reader.read();
-               }
+                if (createFileChooser()) {
+                    ReadFile reader = new ReadFile(file);
+                    reader.read();
+                }
             }
         });
         writeFileButton.addActionListener(new ActionListener() {
@@ -72,9 +72,9 @@ public class ExcelForm implements CellArray {
     }
 
     public static void main(String[] args) {
-            ExcelForm form = new ExcelForm();
-            form.initComponents();
-        }
+        ExcelForm form = new ExcelForm();
+        form.initComponents();
+    }
 
     private void createUIComponents() {
 

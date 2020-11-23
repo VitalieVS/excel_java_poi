@@ -1,4 +1,5 @@
 package options;
+
 import data.CellArray;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -6,18 +7,15 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
-import java.util.Arrays;
 
 public class WriteFile implements CellArray {
-    private String inputFile;
-
     public void write() throws FileNotFoundException {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("Student Data");
 
         Row headerRow = sheet.createRow(0);
 
-        for(int i = 0; i < columnNames.length; i++) {
+        for (int i = 0; i < columnNames.length; i++) {
             Cell cell = headerRow.createCell(i);
             cell.setCellValue(columnNames[i]);
         }
@@ -45,4 +43,4 @@ public class WriteFile implements CellArray {
             e.printStackTrace();
         }
     }
-    }
+}
