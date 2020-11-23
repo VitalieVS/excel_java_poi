@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface CellArray {
-    String[] columnNames = {"Nume", "Prenume", "Grupa", "Buget"};
+   String[] columnNames = {"Nume", "Prenume", "Grupa", "Buget"};
 
     Object[][] data = {
             {"Creanga", "Ion", "IS21Z", "Da"},
