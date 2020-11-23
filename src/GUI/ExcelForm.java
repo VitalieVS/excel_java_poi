@@ -1,27 +1,27 @@
 package GUI;
 
 import data.CellArray;
-import models.ForcedListSelectionModel;
 import options.ReadFile;
 import options.WriteFileComponents.ImageFilter;
 import options.WriteFile;
+import options.createTableData;
+
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 
 public class ExcelForm implements CellArray {
     private JButton writeFileButton;
     private JPanel panelMain;
-    private JButton OpenFile;
+    private JButton OpenFileButton;
+    private JButton createTableButton;
     private JFileChooser fc;
     private File file;
 
     public ExcelForm() {
-        OpenFile.addActionListener(new ActionListener() {
+        OpenFileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                if (createFileChooser()) {
@@ -33,7 +33,18 @@ public class ExcelForm implements CellArray {
         writeFileButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 WriteFile writer = new WriteFile();
-                writer.write();
+                try {
+                    writer.write();
+                } catch (FileNotFoundException fileNotFoundException) {
+                    fileNotFoundException.printStackTrace();
+                }
+            }
+        });
+        createTableButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                createTableData tableData = new createTableData();
+                tableData.insertRows();
             }
         });
     }

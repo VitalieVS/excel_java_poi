@@ -39,15 +39,11 @@ public class ReadFile implements CellArray {
                     Cell currentCell = cellIterator.next();
                     if (currentCell.getCellType() == CellType.STRING) {
                         CellStringValueData foo = new CellStringValueData(
-                                currentCell.getStringCellValue(),
-                                currentCell.getRowIndex(),
-                                currentCell.getColumnIndex());
+                                currentCell.getStringCellValue());
                         stringValueList.add(foo);
                     } else if (currentCell.getCellType() == CellType.NUMERIC) {
                         CellNumericValueData foo = new CellNumericValueData(
-                                currentCell.getNumericCellValue(),
-                                currentCell.getRowIndex(),
-                                currentCell.getColumnIndex());
+                                currentCell.getNumericCellValue());
                         numericValueList.add(foo);
                     }
                 }

@@ -1,56 +1,48 @@
 package options;
+import data.CellArray;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.Arrays;
 
-public class WriteFile {
+public class WriteFile implements CellArray {
     private String inputFile;
 
-    public void write() {
+    public void write() throws FileNotFoundException {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("Student Data");
-        Map<String, Object[]> data = new TreeMap<String, Object[]>();
-        data.put("1", new Object[] {"ID", "NAME", "LASTNAME"});
-        data.put("2", new Object[] {1, "Amit", "Shukla"});
-        data.put("3", new Object[] {2, "Lokesh", "Gupta"});
-        data.put("4", new Object[] {3, "John", "Adwards"});
-        data.put("5", new Object[] {4, "Brian", "Schultz"});
 
-        int rownum = 0;
-        Set<String> keyset = data.keySet();
-        for (String key : keyset)
-        {
-            Row row = sheet.createRow(rownum++);
-            Object [] objArr = data.get(key);
-            int cellnum = 0;
-            for (Object obj : objArr)
-            {
-                Cell cell = row.createCell(cellnum++);
-                if(obj instanceof String)
-                    cell.setCellValue((String)obj);
-                else if(obj instanceof Integer)
-                    cell.setCellValue((Integer)obj);
+        Row headerRow = sheet.createRow(0);
+
+        for(int i = 0; i < columnNames.length; i++) {
+            Cell cell = headerRow.createCell(i);
+            cell.setCellValue(columnNames[i]);
+        }
+
+        int rowCount = 0;
+
+        for (Object[] student : data) {
+            Row row = sheet.createRow(++rowCount);
+
+            int columnCount = 0;
+
+            for (Object field : student) {
+                Cell cell = row.createCell(columnCount++);
+                if (field instanceof String) {
+                    cell.setCellValue((String) field);
+                } else if (field instanceof Integer) {
+                    cell.setCellValue((Integer) field);
+                }
             }
         }
-        try
-        {
-            FileOutputStream out = new FileOutputStream(new File("test.xlsx"));
-            workbook.write(out);
-            out.close();
-        }
-        catch (Exception e)
-        {
+
+        try (FileOutputStream outputStream = new FileOutputStream("testare.xlsx")) {
+            workbook.write(outputStream);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    public void setInputFile(String inputFile) {
-        this.inputFile = inputFile;
     }
-}

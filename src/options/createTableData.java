@@ -7,7 +7,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class createTable implements CellArray {
+public class createTableData implements CellArray {
     public void insertRows(){
             JFrame frame = new JFrame("Inserting rows in the table!");
             JPanel panel = new JPanel();
