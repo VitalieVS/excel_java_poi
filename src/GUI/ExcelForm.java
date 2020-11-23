@@ -19,6 +19,7 @@ public class ExcelForm implements CellArray {
     private JButton OpenFileButton;
     private JButton createTableButton;
     private JButton exportToPDFButton;
+    private JButton openTXTButton;
     private JFileChooser fc;
     private File file;
 
@@ -52,8 +53,14 @@ public class ExcelForm implements CellArray {
         exportToPDFButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ExportToPDF tryHard = new ExportToPDF();
-                tryHard.save();
+                ExportToPDF exporter = new ExportToPDF();
+                exporter.save();
+            }
+        });
+        openTXTButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
     }
