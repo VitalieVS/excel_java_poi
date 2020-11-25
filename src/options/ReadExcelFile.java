@@ -1,8 +1,8 @@
 package options;
 
-import data.CellArray;
-import data.CellNumericValueData;
-import data.CellStringValueData;
+import models.CellArrayModelInterface;
+import models.CellNumericValueModel;
+import models.CellStringValueModel;
 import options.WriteFileComponents.Utils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
@@ -12,7 +12,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Iterator;
 
-public class ReadExcelFile implements CellArray {
+public class ReadExcelFile implements CellArrayModelInterface {
     File inputFile;
 
     public ReadExcelFile(File inputFile) {
@@ -37,11 +37,11 @@ public class ReadExcelFile implements CellArray {
                 while (cellIterator.hasNext()) {
                     Cell currentCell = cellIterator.next();
                     if (currentCell.getCellType() == CellType.STRING) {
-                        CellStringValueData foo = new CellStringValueData(
+                        CellStringValueModel foo = new CellStringValueModel(
                                 currentCell.getStringCellValue());
                         stringValueList.add(foo);
                     } else if (currentCell.getCellType() == CellType.NUMERIC) {
-                        CellNumericValueData foo = new CellNumericValueData(
+                        CellNumericValueModel foo = new CellNumericValueModel(
                                 currentCell.getNumericCellValue());
                         numericValueList.add(foo);
                     }

@@ -1,6 +1,6 @@
 package options;
 
-import data.CellArray;
+import models.CellArrayModelInterface;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -8,7 +8,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
 
-public class WriteFile implements CellArray {
+public class WriteFile implements CellArrayModelInterface {
     public void write() throws FileNotFoundException {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("Student Data");

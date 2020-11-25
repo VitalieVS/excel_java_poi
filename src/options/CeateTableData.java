@@ -1,13 +1,13 @@
 package options;
 
-import data.CellArray;
+import models.CellArrayModelInterface;
 import models.ForcedListSelectionModel;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class CeateTableData implements CellArray {
+public class CeateTableData implements CellArrayModelInterface {
     public void insertRows() {
         JFrame frame = new JFrame("Inserting rows in the table!");
         JPanel panel = new JPanel();

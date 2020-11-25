@@ -1,9 +1,9 @@
-package data;
+package models;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public interface CellArray {
+public interface CellArrayModelInterface {
    String[] columnNames = {"Nume", "Prenume", "Grupa", "Buget"};
 
     Object[][] data = {
@@ -16,6 +16,7 @@ public interface CellArray {
             {"Eminescu", "MIhai", "IS21Z", "Nu"}
     };
 
-    List<CellStringValueData> stringValueList = new ArrayList<>();
-    List<CellNumericValueData> numericValueList = new ArrayList<>();
+    List<CellStringValueModel> stringValueList = new ArrayList<>();
+    List<CellNumericValueModel> numericValueList = new ArrayList<>();
+    List<TXTFileModel> textFileList = new ArrayList<>();
 }

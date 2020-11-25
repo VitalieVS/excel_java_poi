@@ -1,9 +1,9 @@
-package data;
+package models;
 
-public class CellNumericValueData {
+public class CellNumericValueModel {
     double data;
 
-    public CellNumericValueData(double data) {
+    public CellNumericValueModel(double data) {
         this.data = data;
     }
 

@@ -1,6 +1,6 @@
 package GUI;
 
-import data.CellArray;
+import models.CellArrayModelInterface;
 import options.*;
 import options.WriteFileComponents.ImageFilter;
 
@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class ExcelForm implements CellArray {
+public class ExcelForm implements CellArrayModelInterface {
     private JButton writeFileButton;
     private JPanel panelMain;
     private JButton OpenFileButton;
@@ -59,7 +59,11 @@ public class ExcelForm implements CellArray {
             public void actionPerformed(ActionEvent e) {
                 if (createFileChooser()) {
                     ReadTextFile reader = new ReadTextFile(file);
-                    reader.readFile();
+                    try {
+                        reader.readFile();
+                    } catch (FileNotFoundException fileNotFoundException) {
+                        fileNotFoundException.printStackTrace();
+                    }
                 }
             }
         });
