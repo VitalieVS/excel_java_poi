@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class ReadTextFile implements CellArrayModelInterface {
     File file;
-
     public ReadTextFile(File file) {
         this.file = file;
     }
