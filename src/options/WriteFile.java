@@ -1,6 +1,7 @@
 package options;
 
 import models.CellArrayModelInterface;
+import models.CellStringValueModel;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -9,7 +10,15 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.*;
 
 public class WriteFile implements CellArrayModelInterface {
-    public void write() throws FileNotFoundException {
+
+    int mode ;
+
+    public WriteFile(int mode) {
+        this.mode = mode;
+    }
+
+
+    public void write() {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("Student Data");
 
@@ -19,21 +28,44 @@ public class WriteFile implements CellArrayModelInterface {
             Cell cell = headerRow.createCell(i);
             cell.setCellValue(columnNames[i]);
         }
-        int rowCount = 0;
 
-        for (models.TXTFileModel txtFileModel : textFileList) {
-            Row row = sheet.createRow(++rowCount);
-            int columnCount = 0;
 
-            for (int j = 0; j < 5; j++ ) {
-                Cell cell = row.createCell(columnCount++);
-                if (j == 4) {
-                    cell.setCellValue(Double.parseDouble(txtFileModel.getValue(j)));
-                } else {
-                    cell.setCellValue(txtFileModel.getValue(j));
+        if (mode == 1) {
+            int rowCount = 0;
+
+            for (models.TXTFileModel txtFileModel : textFileList) {
+                Row row = sheet.createRow(++rowCount);
+                int columnCount = 0;
+
+                for (int j = 0; j < 5; j++ ) {
+                    Cell cell = row.createCell(columnCount++);
+                    if (j == 4) {
+                        cell.setCellValue(Double.parseDouble(txtFileModel.getValue(j)));
+                    } else {
+                        cell.setCellValue(txtFileModel.getValue(j));
+                    }
                 }
             }
-        }
+
+        } else {
+            int rowCount = 0;
+            System.out.println(stringValueList.size() );
+            System.out.println(stringValueList.size() / 2);
+
+            for (int i = 0; i < stringValueList.size() / 2; i++) {
+                Row row = sheet.createRow(++rowCount);
+                int columnCount = 0;
+                //int modelVal = 0;
+
+                for (int j = 0 ; j < 1; j++) {
+                    Cell cell = row.createCell(columnCount++);
+                    cell.setCellValue(stringValueList.get(i).getStringData());
+                }
+
+            }
+            }
+
+
 
         try (FileOutputStream outputStream = new FileOutputStream("testare.xlsx")) {
             workbook.write(outputStream);

@@ -26,28 +26,32 @@ public class ExcelForm implements CellArrayModelInterface {
                 if (createFileChooser() && Utils.getExtension(file).equals(Utils.txt)) {
                     ReadTextFile reader = new ReadTextFile(file);
                     reader.readFile();
-                    System.out.println("txt");
                 } else {
                     ReadExcelFile reader = new ReadExcelFile(file);
                     reader.read();
-                    System.out.println("xlss");
                 }
             }
         });
         writeFileButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                WriteFile writer = new WriteFile();
-                try {
-                    writer.write();
-                } catch (FileNotFoundException fileNotFoundException) {
-                    fileNotFoundException.printStackTrace();
+                WriteFile writer;
+                if (Utils.getExtension(file).equals(Utils.txt)) {
+                    writer = new WriteFile(1);
+                } else {
+                    writer = new WriteFile(2);
                 }
+                writer.write();
             }
         });
         createTableButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CeateTableData tableData = new CeateTableData();
+                CreateTableData tableData;
+                if (Utils.getExtension(file).equals(Utils.txt)) {
+                   tableData = new CreateTableData(1);
+                } else {
+                    tableData = new CreateTableData(2);
+                }
                 tableData.insertRows();
             }
         });

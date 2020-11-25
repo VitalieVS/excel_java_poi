@@ -2,11 +2,18 @@ package options;
 
 import models.CellArrayModelInterface;
 import models.ForcedListSelectionModel;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class CeateTableData implements CellArrayModelInterface {
+public class CreateTableData implements CellArrayModelInterface {
+    int mode ;
+
+    public CreateTableData(int mode) {
+        this.mode = mode;
+    }
+
     public void insertRows() {
         JFrame frame = new JFrame("Created Table !");
         JPanel panel = new JPanel();
@@ -18,7 +25,18 @@ public class CeateTableData implements CellArrayModelInterface {
         panel.add(table.getTableHeader(), BorderLayout.PAGE_START);
         panel.add(table, BorderLayout.CENTER);
 
-        if (textFileList.isEmpty()) {
+        if (mode == 1) {
+            for (int i = 0; i < textFileList.size(); i++) {
+                model.insertRow(i, new Object[]{
+                        textFileList.get(i).getNume(),
+                        textFileList.get(i).getPrenume(),
+                        textFileList.get(i).getGrupa(),
+                        textFileList.get(i).getBursa(),
+                        textFileList.get(i).getMedia()
+                });
+            }
+
+        } else {
             int modelVal = 0;
             for (int i = 0; i < stringValueList.size() / 5 ; i++) {
                 model.insertRow(i, new Object[]{
@@ -31,19 +49,6 @@ public class CeateTableData implements CellArrayModelInterface {
                 modelVal += 5;
             }
         }
-
-         if (stringValueList.isEmpty()) {
-             for (int i = 0; i < textFileList.size(); i++) {
-                 model.insertRow(i, new Object[]{
-                         textFileList.get(i).getNume(),
-                         textFileList.get(i).getPrenume(),
-                         textFileList.get(i).getGrupa(),
-                         textFileList.get(i).getBursa(),
-                         textFileList.get(i).getMedia()
-                 });
-             }
-         }
-
 
             table.setSelectionModel(new ForcedListSelectionModel());
             table.getTableHeader().setReorderingAllowed(false);
