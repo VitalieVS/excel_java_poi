@@ -5,12 +5,14 @@ public class TXTFileModel {
     String nume;
     String grupa;
     String bursa;
+    String media;
 
     public TXTFileModel(String[] data) {
        this.nume = data[0];
        this.prenume = data[1];
        this.grupa = data[2];
        this.bursa = data[3];
+       this.media = data[4];
     }
 
     public String getBursa() {
@@ -45,6 +47,10 @@ public class TXTFileModel {
         this.bursa = bursa;
     }
 
+    public String getMedia() { return media; }
+
+    public void setMedia(String media) { this.media = media; }
+
     public String getValue(int j) {
         switch (j) {
             case 0 -> {
@@ -58,6 +64,9 @@ public class TXTFileModel {
             }
             case 3 -> {
                 return bursa;
+            }
+            case 4 -> {
+                return media;
             }
             default -> {
                 return null;

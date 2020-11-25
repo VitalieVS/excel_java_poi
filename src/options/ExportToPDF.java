@@ -12,7 +12,7 @@ public class ExportToPDF {
         ExcelDocument excelDoc;
             try {
                 excelDoc = new ExcelDocument("testare.xlsx", new ExcelConvertOptions());
-                excelDoc.saveAsPDF("test.pdf");
+                excelDoc.saveAsPDF("testare.pdf");
             } catch (IOException | PDFException | OfficeException e) {
                 e.printStackTrace();
             }

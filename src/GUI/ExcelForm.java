@@ -3,6 +3,8 @@ package GUI;
 import models.CellArrayModelInterface;
 import options.*;
 import options.WriteFileComponents.ImageFilter;
+import options.WriteFileComponents.Utils;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,17 +17,20 @@ public class ExcelForm implements CellArrayModelInterface {
     private JButton OpenFileButton;
     private JButton createTableButton;
     private JButton exportToPDFButton;
-    private JButton openTXTButton;
-    private JFileChooser fc;
     private File file;
 
     public ExcelForm() {
         OpenFileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (createFileChooser()) {
+                if (createFileChooser() && Utils.getExtension(file).equals(Utils.txt)) {
+                    ReadTextFile reader = new ReadTextFile(file);
+                    reader.readFile();
+                    System.out.println("txt");
+                } else {
                     ReadExcelFile reader = new ReadExcelFile(file);
                     reader.read();
+                    System.out.println("xlss");
                 }
             }
         });
@@ -53,23 +58,10 @@ public class ExcelForm implements CellArrayModelInterface {
                 exporter.save();
             }
         });
-        openTXTButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (createFileChooser()) {
-                    ReadTextFile reader = new ReadTextFile(file);
-                    try {
-                        reader.readFile();
-                    } catch (FileNotFoundException fileNotFoundException) {
-                        fileNotFoundException.printStackTrace();
-                    }
-                }
-            }
-        });
     }
 
     public boolean createFileChooser() {
-        fc = new JFileChooser();
+        JFileChooser fc = new JFileChooser();
         fc.setAcceptAllFileFilterUsed(false);
         fc.addChoosableFileFilter(new ImageFilter());
         fc.setCurrentDirectory(new File(System.getProperty("user.home")));

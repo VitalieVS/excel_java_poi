@@ -12,7 +12,7 @@ public class ReadTextFile implements CellArrayModelInterface {
         this.file = file;
     }
 
-    public void readFile() throws FileNotFoundException {
+    public void readFile()  {
         try {
             Scanner scanner = new Scanner(new File(String.valueOf(this.file)));
             while (scanner.hasNextLine()) {
@@ -21,8 +21,8 @@ public class ReadTextFile implements CellArrayModelInterface {
                 textFileList.add(foo);
             }
             scanner.close();
-        } catch (IOException e) {
-            System.out.println("Error accessing input file!");
+        } catch (FileNotFoundException e) {
+            System.out.println(e);
         }
     }
 }

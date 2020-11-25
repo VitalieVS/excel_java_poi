@@ -36,9 +36,8 @@ public class ReadExcelFile implements CellArrayModelInterface {
                                 currentCell.getStringCellValue());
                         stringValueList.add(foo);
                     } else if (currentCell.getCellType() == CellType.NUMERIC) {
-                        CellNumericValueModel foo = new CellNumericValueModel(
-                                currentCell.getNumericCellValue());
-                        numericValueList.add(foo);
+                        CellStringValueModel foo = new CellStringValueModel(String.valueOf(currentCell.getNumericCellValue()));
+                        stringValueList.add(foo);
                     }
                 }
             }

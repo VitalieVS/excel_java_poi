@@ -25,9 +25,13 @@ public class WriteFile implements CellArrayModelInterface {
             Row row = sheet.createRow(++rowCount);
             int columnCount = 0;
 
-            for (int j = 0; j < 4; j++ ) {
+            for (int j = 0; j < 5; j++ ) {
                 Cell cell = row.createCell(columnCount++);
-                cell.setCellValue(txtFileModel.getValue(j));
+                if (j == 4) {
+                    cell.setCellValue(Double.parseDouble(txtFileModel.getValue(j)));
+                } else {
+                    cell.setCellValue(txtFileModel.getValue(j));
+                }
             }
         }
 
