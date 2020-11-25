@@ -10,7 +10,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Iterator;
 
 public class ReadExcelFile implements CellArrayModelInterface {
     File inputFile;
@@ -29,13 +28,9 @@ public class ReadExcelFile implements CellArrayModelInterface {
                 workbook = new XSSFWorkbook(excelFile);
             }
             Sheet datatypeSheet = workbook.getSheetAt(0);
-            Iterator<Row> iterator = datatypeSheet.iterator();
 
-            while (iterator.hasNext()) {
-                Row currentRow = iterator.next();
-                Iterator<Cell> cellIterator = currentRow.iterator();
-                while (cellIterator.hasNext()) {
-                    Cell currentCell = cellIterator.next();
+            for (Row currentRow : datatypeSheet) {
+                for (Cell currentCell : currentRow) {
                     if (currentCell.getCellType() == CellType.STRING) {
                         CellStringValueModel foo = new CellStringValueModel(
                                 currentCell.getStringCellValue());

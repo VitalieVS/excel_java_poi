@@ -3,7 +3,6 @@ package GUI;
 import models.CellArrayModelInterface;
 import options.*;
 import options.WriteFileComponents.ImageFilter;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

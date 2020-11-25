@@ -20,9 +20,7 @@ public class WriteFile implements CellArrayModelInterface {
             cell.setCellValue(columnNames[i]);
         }
 
-        int rowCount = 0;
-
-        for (Object[] student : data) {
+      /*  for (Object[] student : data) {
             Row row = sheet.createRow(++rowCount);
 
             int columnCount = 0;
@@ -37,8 +35,26 @@ public class WriteFile implements CellArrayModelInterface {
             }
         }
 
+       */
+
+        int rowCount = 0;
+
+        for (models.TXTFileModel txtFileModel : textFileList) {
+            Row row = sheet.createRow(++rowCount);
+            int columnCount = 0;
+            Cell cell1 = row.createCell(columnCount++);
+            Cell cell2 = row.createCell(columnCount++);
+            Cell cell3 = row.createCell(columnCount++);
+            Cell cell4 = row.createCell(columnCount++);
+            cell1.setCellValue(txtFileModel.getNume());
+            cell2.setCellValue(txtFileModel.getPrenume());
+            cell3.setCellValue(txtFileModel.getGrupa());
+            cell4.setCellValue(txtFileModel.getBursa());
+        }
+
         try (FileOutputStream outputStream = new FileOutputStream("testare.xlsx")) {
             workbook.write(outputStream);
+            workbook.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,6 +1,5 @@
 package options;
 
-
 import com.qoppa.office.ExcelConvertOptions;
 import com.qoppa.office.ExcelDocument;
 import com.qoppa.office.OfficeException;

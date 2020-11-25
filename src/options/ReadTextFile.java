@@ -2,9 +2,9 @@ package options;
 
 import models.CellArrayModelInterface;
 import models.TXTFileModel;
-
 import java.io.*;
 import java.util.Scanner;
+
 
 public class ReadTextFile implements CellArrayModelInterface {
     File file;
