@@ -24,15 +24,6 @@ public class CeateTableData implements CellArrayModelInterface {
                     textFileList.get(i).getGrupa(),
                     textFileList.get(i).getBursa() });
         }
-
-        //model.insertRow(0, textFileList.get(0).getBursa());
-        //Insert first position
-        // model.insertRow(0, new Object[]{"Ion", "AldeaTeodorovici", "is21z", "Nu"});
-        //Insert 4 position
-        // model.insertRow(3, new Object[]{"Ion", "dasdas", "is21z", "Nu"});
-        //Insert last position
-        // model.insertRow(table.getRowCount(),new Object[]{"Sushi", "Philadelphia", "is21z", "Da"});
-        //setReorderingAllowed(boolean reorderingAllowed)
         table.setSelectionModel(new ForcedListSelectionModel());
         table.getTableHeader().setReorderingAllowed(false);
         panel.add(table);
