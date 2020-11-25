@@ -44,4 +44,24 @@ public class TXTFileModel {
     public void setBursa(String bursa) {
         this.bursa = bursa;
     }
+
+    public String getValue(int j) {
+        switch (j) {
+            case 0 -> {
+                return nume;
+            }
+            case 1 -> {
+                return prenume;
+            }
+            case 2 -> {
+                return grupa;
+            }
+            case 3 -> {
+                return bursa;
+            }
+            default -> {
+                return null;
+            }
+        }
+    }
 }
