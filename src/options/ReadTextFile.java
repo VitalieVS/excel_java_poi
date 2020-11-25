@@ -1,7 +1,6 @@
 package options;
 
 import models.CellArrayModelInterface;
-import models.CellStringValueModel;
 import models.TXTFileModel;
 
 import java.io.*;
@@ -15,12 +14,6 @@ public class ReadTextFile implements CellArrayModelInterface {
     }
 
     public void readFile() throws FileNotFoundException {
-        String nume = null;
-        String prenume = null;
-        String grupa = null;
-        String bursa = null;
-
-        
         int elementNumber = 0;
 
         try {
