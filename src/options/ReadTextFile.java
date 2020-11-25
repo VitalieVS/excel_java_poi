@@ -14,26 +14,14 @@ public class ReadTextFile implements CellArrayModelInterface {
     }
 
     public void readFile() throws FileNotFoundException {
-        int elementNumber = 0;
-
         try {
-            Scanner s = new Scanner(new File(String.valueOf(this.file)));
-            while (s.hasNext()) {
-                TXTFileModel  foo = new TXTFileModel();
-                if (elementNumber == 4) {
-                    elementNumber = 0;
-                    textFileList.add(foo);
-                }
-
-                switch (elementNumber) {
-                    case 0 -> foo.setNume(s.next());
-                    case 1 -> foo.setPrenume(s.next());
-                    case 2 -> foo.setGrupa(s.next());
-                    case 3 -> foo.setBursa(s.next());
-                }
-                elementNumber++;
+            Scanner scanner = new Scanner(new File(String.valueOf(this.file)));
+            while (scanner.hasNextLine()) {
+                String[] array = scanner.nextLine().split(" ");
+                TXTFileModel foo = new TXTFileModel(array);
+                textFileList.add(foo);
             }
-
+            scanner.close();
         } catch (IOException e) {
             System.out.println("Error accessing input file!");
         }

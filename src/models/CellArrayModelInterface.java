@@ -18,5 +18,5 @@ public interface CellArrayModelInterface {
 
     List<CellStringValueModel> stringValueList = new ArrayList<>();
     List<CellNumericValueModel> numericValueList = new ArrayList<>();
-    List<TXTFileModel> textFileList = new ArrayList<>();
+    List<TXTFileModel> textFileList = new ArrayList<TXTFileModel>();
 }

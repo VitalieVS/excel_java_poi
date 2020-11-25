@@ -6,7 +6,12 @@ public class TXTFileModel {
     String grupa;
     String bursa;
 
-
+    public TXTFileModel(String[] data) {
+       this.nume = data[0];
+       this.prenume = data[1];
+       this.grupa = data[2];
+       this.bursa = data[3];
+    }
 
     public String getBursa() {
         return bursa;
