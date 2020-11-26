@@ -9,7 +9,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileNotFoundException;
 
 public class ExcelForm implements CellArrayModelInterface {
     private JButton writeFileButton;
@@ -23,6 +22,8 @@ public class ExcelForm implements CellArrayModelInterface {
         OpenFileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                stringValueList.clear();
+                textFileList.clear();
                 if (createFileChooser() && Utils.getExtension(file).equals(Utils.txt)) {
                     ReadTextFile reader = new ReadTextFile(file);
                     reader.readFile();

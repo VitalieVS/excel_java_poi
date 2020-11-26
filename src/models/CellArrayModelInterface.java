@@ -7,6 +7,5 @@ public interface CellArrayModelInterface {
    String[] columnNames = {"Nume", "Prenume", "Grupa", "Buget", "Media"};
 
     List<CellStringValueModel> stringValueList = new ArrayList<>();
-    List<CellNumericValueModel> numericValueList = new ArrayList<>();
     List<TXTFileModel> textFileList = new ArrayList<>();
 }

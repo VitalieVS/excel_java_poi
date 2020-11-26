@@ -31,22 +31,6 @@ public class TXTFileModel {
         return prenume;
     }
 
-    public void setPrenume(String prenume) {
-        this.prenume = prenume;
-    }
-
-    public void setNume(String nume) {
-        this.nume = nume;
-    }
-
-    public void setGrupa(String grupa) {
-        this.grupa = grupa;
-    }
-
-    public void setBursa(String bursa) {
-        this.bursa = bursa;
-    }
-
     public String getMedia() { return media; }
 
     public void setMedia(String media) { this.media = media; }
