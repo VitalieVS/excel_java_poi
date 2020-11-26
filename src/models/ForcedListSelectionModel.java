@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class ForcedListSelectionModel extends DefaultListSelectionModel {
 
-    public ForcedListSelectionModel () {
+    public ForcedListSelectionModel() {
         setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
 

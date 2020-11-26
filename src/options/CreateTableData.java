@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class CreateTableData implements CellArrayModelInterface {
-    int mode ;
+    int mode;
 
     public CreateTableData(int mode) {
         this.mode = mode;
@@ -38,7 +38,7 @@ public class CreateTableData implements CellArrayModelInterface {
 
         } else {
             int modelVal = 0;
-            for (int i = 0; i < stringValueList.size() / 5 ; i++) {
+            for (int i = 0; i < stringValueList.size() / 5; i++) {
                 model.insertRow(i, new Object[]{
                         stringValueList.get(modelVal).getStringData(),
                         stringValueList.get(modelVal + 1).getStringData(),
@@ -50,12 +50,12 @@ public class CreateTableData implements CellArrayModelInterface {
             }
         }
 
-            table.setSelectionModel(new ForcedListSelectionModel());
-            table.getTableHeader().setReorderingAllowed(false);
-            panel.add(table);
-            frame.add(panel);
-            frame.setSize(300, 300);
-            frame.setVisible(true);
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        }
+        table.setSelectionModel(new ForcedListSelectionModel());
+        table.getTableHeader().setReorderingAllowed(false);
+        panel.add(table);
+        frame.add(panel);
+        frame.setSize(300, 300);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
+}

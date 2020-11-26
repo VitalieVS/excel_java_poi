@@ -10,11 +10,11 @@ import java.io.IOException;
 public class ExportToPDF {
     public void save() {
         ExcelDocument excelDoc;
-            try {
-                excelDoc = new ExcelDocument("testare.xlsx", new ExcelConvertOptions());
-                excelDoc.saveAsPDF("testare.pdf");
-            } catch (IOException | PDFException | OfficeException e) {
-                e.printStackTrace();
-            }
+        try {
+            excelDoc = new ExcelDocument("testare.xlsx", new ExcelConvertOptions());
+            excelDoc.saveAsPDF("testare.pdf");
+        } catch (IOException | PDFException | OfficeException e) {
+            e.printStackTrace();
+        }
     }
 }

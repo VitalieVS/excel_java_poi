@@ -10,7 +10,7 @@ import java.io.*;
 
 public class WriteExcelFile implements CellArrayModelInterface {
 
-    int mode ;
+    int mode;
 
     public WriteExcelFile(int mode) {
         this.mode = mode;
@@ -35,7 +35,7 @@ public class WriteExcelFile implements CellArrayModelInterface {
                 Row row = sheet.createRow(++rowCount);
                 int columnCount = 0;
 
-                for (int j = 0; j < 5; j++ ) {
+                for (int j = 0; j < 5; j++) {
                     Cell cell = row.createCell(columnCount++);
                     if (j == 4) {
                         cell.setCellValue(Double.parseDouble(txtFileModel.getValue(j)));
@@ -49,16 +49,17 @@ public class WriteExcelFile implements CellArrayModelInterface {
             int columnCount = 0;
 
             int modelVal = 0;
-            for (int i = 0; i < stringValueList.size() / 5 ; i++) {
+            for (int i = 0; i < stringValueList.size() / 5; i++) {
                 Row row = sheet.createRow(++rowCount);
-                for (int j = 0; j < 5; j++ ){
+                for (int j = 0; j < 5; j++) {
                     Cell cell = row.createCell(columnCount++);
                     cell.setCellValue(stringValueList.get(modelVal).getStringData());
                     modelVal += 1;
                 }
                 columnCount = 0;
-                };
             }
+            ;
+        }
 
         try (FileOutputStream outputStream = new FileOutputStream("testare.xlsx")) {
             workbook.write(outputStream);

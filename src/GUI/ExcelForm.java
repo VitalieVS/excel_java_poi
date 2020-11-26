@@ -49,7 +49,7 @@ public class ExcelForm implements CellArrayModelInterface {
             public void actionPerformed(ActionEvent e) {
                 CreateTableData tableData;
                 if (Utils.getExtension(file).equals(Utils.txt)) {
-                   tableData = new CreateTableData(1);
+                    tableData = new CreateTableData(1);
                 } else {
                     tableData = new CreateTableData(2);
                 }

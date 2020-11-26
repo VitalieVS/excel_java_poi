@@ -8,11 +8,11 @@ public class TXTFileModel {
     String media;
 
     public TXTFileModel(String[] data) {
-       this.nume = data[0];
-       this.prenume = data[1];
-       this.grupa = data[2];
-       this.bursa = data[3];
-       this.media = data[4];
+        this.nume = data[0];
+        this.prenume = data[1];
+        this.grupa = data[2];
+        this.bursa = data[3];
+        this.media = data[4];
     }
 
     public String getBursa() {
@@ -31,9 +31,13 @@ public class TXTFileModel {
         return prenume;
     }
 
-    public String getMedia() { return media; }
+    public String getMedia() {
+        return media;
+    }
 
-    public void setMedia(String media) { this.media = media; }
+    public void setMedia(String media) {
+        this.media = media;
+    }
 
     public String getValue(int j) {
         switch (j) {
