@@ -49,23 +49,19 @@ public class WriteFile implements CellArrayModelInterface {
 
         } else {
             int rowCount = 0;
-            System.out.println(stringValueList.size() );
-            System.out.println(stringValueList.size() / 2);
+            int columnCount = 0;
 
-            for (int i = 0; i < stringValueList.size() / 2; i++) {
+            int modelVal = 0;
+            for (int i = 0; i < stringValueList.size() / 5 ; i++) {
                 Row row = sheet.createRow(++rowCount);
-                int columnCount = 0;
-                //int modelVal = 0;
-
-                for (int j = 0 ; j < 1; j++) {
+                for (int j = 0; j < 5; j++ ){
                     Cell cell = row.createCell(columnCount++);
-                    cell.setCellValue(stringValueList.get(i).getStringData());
+                    cell.setCellValue(stringValueList.get(modelVal).getStringData());
+                    modelVal += 1;
                 }
-
+                columnCount = 0;
+                };
             }
-            }
-
-
 
         try (FileOutputStream outputStream = new FileOutputStream("testare.xlsx")) {
             workbook.write(outputStream);
