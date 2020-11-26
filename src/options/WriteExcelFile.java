@@ -3,6 +3,8 @@ package options;
 import models.CellArrayModelInterface;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -53,13 +55,26 @@ public class WriteExcelFile implements CellArrayModelInterface {
                 Row row = sheet.createRow(++rowCount);
                 for (int j = 0; j < 5; j++) {
                     Cell cell = row.createCell(columnCount++);
-                    cell.setCellValue(stringValueList.get(modelVal).getStringData());
+                    if (j == 4) {
+                        cell.setCellValue(Double.parseDouble(stringValueList.get(modelVal).getStringData()));
+                    } else {
+                        cell.setCellValue(stringValueList.get(modelVal).getStringData());
+                    }
                     modelVal += 1;
                 }
                 columnCount = 0;
             }
-            ;
         }
+
+        sheet = workbook.getSheetAt(0);
+        int lastCellNum = sheet.getRow(0).getLastCellNum();
+        XSSFCell formulaCell = sheet.getRow(0).createCell(lastCellNum);
+        formulaCell.setCellFormula("AVERAGE(E:E)");
+
+        XSSFFormulaEvaluator formulaEvaluator =
+                workbook.getCreationHelper().createFormulaEvaluator();
+        formulaEvaluator.evaluateFormulaCell(formulaCell);
+
 
         try (FileOutputStream outputStream = new FileOutputStream("testare.xlsx")) {
             workbook.write(outputStream);
