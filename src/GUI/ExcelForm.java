@@ -35,11 +35,11 @@ public class ExcelForm implements CellArrayModelInterface {
         });
         writeFileButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                WriteFile writer;
+                WriteExcelFile writer;
                 if (Utils.getExtension(file).equals(Utils.txt)) {
-                    writer = new WriteFile(1);
+                    writer = new WriteExcelFile(1);
                 } else {
-                    writer = new WriteFile(2);
+                    writer = new WriteExcelFile(2);
                 }
                 writer.write();
             }

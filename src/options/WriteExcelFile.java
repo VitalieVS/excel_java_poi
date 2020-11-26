@@ -1,7 +1,6 @@
 package options;
 
 import models.CellArrayModelInterface;
-import models.CellStringValueModel;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -9,11 +8,11 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
 
-public class WriteFile implements CellArrayModelInterface {
+public class WriteExcelFile implements CellArrayModelInterface {
 
     int mode ;
 
-    public WriteFile(int mode) {
+    public WriteExcelFile(int mode) {
         this.mode = mode;
     }
 
@@ -29,9 +28,8 @@ public class WriteFile implements CellArrayModelInterface {
             cell.setCellValue(columnNames[i]);
         }
 
-
+        int rowCount = 0;
         if (mode == 1) {
-            int rowCount = 0;
 
             for (models.TXTFileModel txtFileModel : textFileList) {
                 Row row = sheet.createRow(++rowCount);
@@ -48,7 +46,6 @@ public class WriteFile implements CellArrayModelInterface {
             }
 
         } else {
-            int rowCount = 0;
             int columnCount = 0;
 
             int modelVal = 0;

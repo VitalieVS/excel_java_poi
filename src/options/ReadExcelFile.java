@@ -1,7 +1,7 @@
 package options;
 
 import models.CellArrayModelInterface;
-import models.CellStringValueModel;
+import models.CellValueModel;
 import options.WriteFileComponents.Utils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
@@ -31,11 +31,11 @@ public class ReadExcelFile implements CellArrayModelInterface {
             for (Row currentRow : datatypeSheet) {
                 for (Cell currentCell : currentRow) {
                     if (currentCell.getCellType() == CellType.STRING) {
-                        CellStringValueModel foo = new CellStringValueModel(
+                        CellValueModel foo = new CellValueModel(
                                 currentCell.getStringCellValue());
                         stringValueList.add(foo);
                     } else if (currentCell.getCellType() == CellType.NUMERIC) {
-                        CellStringValueModel foo = new CellStringValueModel(String.valueOf(currentCell.getNumericCellValue()));
+                        CellValueModel foo = new CellValueModel(String.valueOf(currentCell.getNumericCellValue()));
                         stringValueList.add(foo);
                     }
                 }

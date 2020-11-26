@@ -1,9 +1,9 @@
 package models;
 
-public class CellStringValueModel {
+public class CellValueModel {
     String data;
 
-    public CellStringValueModel(String data) {
+    public CellValueModel(String data) {
         this.data = data;
     }
 
