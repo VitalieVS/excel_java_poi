@@ -91,8 +91,4 @@ public class ExcelForm implements CellArrayModelInterface {
         ExcelForm form = new ExcelForm();
         form.initComponents();
     }
-
-    private void createUIComponents() {
-
-    }
 }

@@ -1,12 +1,10 @@
 package options;
 
 import models.CellArrayModelInterface;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xssf.usermodel.*;
 
 import java.io.*;
 
@@ -40,7 +38,11 @@ public class WriteExcelFile implements CellArrayModelInterface {
                 for (int j = 0; j < 5; j++) {
                     Cell cell = row.createCell(columnCount++);
                     if (j == 4) {
+                        XSSFCellStyle lockedNumericStyle = workbook.createCellStyle();
+                        lockedNumericStyle.setLocked(true);
                         cell.setCellValue(Double.parseDouble(txtFileModel.getValue(j)));
+                        cell.setCellStyle(lockedNumericStyle);
+                        sheet.protectSheet("password");
                     } else {
                         cell.setCellValue(txtFileModel.getValue(j));
                     }
@@ -56,7 +58,11 @@ public class WriteExcelFile implements CellArrayModelInterface {
                 for (int j = 0; j < 5; j++) {
                     Cell cell = row.createCell(columnCount++);
                     if (j == 4) {
+                        XSSFCellStyle lockedNumericStyle = workbook.createCellStyle();
+                        lockedNumericStyle.setLocked(true);
                         cell.setCellValue(Double.parseDouble(stringValueList.get(modelVal).getStringData()));
+                        cell.setCellStyle(lockedNumericStyle);
+                        sheet.protectSheet("password");
                     } else {
                         cell.setCellValue(stringValueList.get(modelVal).getStringData());
                     }
